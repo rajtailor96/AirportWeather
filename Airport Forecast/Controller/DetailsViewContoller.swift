@@ -13,6 +13,7 @@ class DetailsViewController: UITableViewController{
     var conditionsArray: [String]?
     var forecastArray: [String]?
     var arrayToDisplay: [String]?
+    var tableTitle = "Conditions"
 
     override func viewDidLoad() {
         arrayToDisplay = conditionsArray
@@ -23,12 +24,14 @@ class DetailsViewController: UITableViewController{
         switch sender.selectedSegmentIndex {
         case 0:
             arrayToDisplay = conditionsArray
+            
         case 1:
             arrayToDisplay = forecastArray
         default:
             arrayToDisplay = conditionsArray
         }
         
+        tableTitle = sender.titleForSegment(at: sender.selectedSegmentIndex)!
         tableView.reloadData()
 
     }
@@ -43,16 +46,13 @@ class DetailsViewController: UITableViewController{
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell", for: indexPath)
-
-  
         cell.textLabel?.text = arrayToDisplay?[indexPath.row]
-        //cell.textLabel?.text = "Hello1"
 
         return cell
     }
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Section \(section)"
+        return "Airport Weather \(tableTitle)"
     }
     
 
