@@ -16,6 +16,12 @@
 		BC1629192621CE53001D75F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC1629172621CE53001D75F0 /* LaunchScreen.storyboard */; };
 		BC1629242621CE53001D75F0 /* Airport_ForecastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1629232621CE53001D75F0 /* Airport_ForecastTests.swift */; };
 		BC16292F2621CE53001D75F0 /* Airport_ForecastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16292E2621CE53001D75F0 /* Airport_ForecastUITests.swift */; };
+		BC1629402621CF80001D75F0 /* DetailsViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16293F2621CF80001D75F0 /* DetailsViewContoller.swift */; };
+		BC1629422621D189001D75F0 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1629412621D189001D75F0 /* WeatherData.swift */; };
+		BC1629442621D1B1001D75F0 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1629432621D1B1001D75F0 /* WeatherManager.swift */; };
+		BC1629462621D20F001D75F0 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1629452621D20F001D75F0 /* ConditionModel.swift */; };
+		BC1629482621DC1F001D75F0 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1629472621DC1F001D75F0 /* ForecastModel.swift */; };
+		BC5D2FB326266F0700D6CE64 /* ShakingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D2FB226266F0700D6CE64 /* ShakingTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +57,12 @@
 		BC16292A2621CE53001D75F0 /* Airport ForecastUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Airport ForecastUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC16292E2621CE53001D75F0 /* Airport_ForecastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport_ForecastUITests.swift; sourceTree = "<group>"; };
 		BC1629302621CE53001D75F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC16293F2621CF80001D75F0 /* DetailsViewContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewContoller.swift; sourceTree = "<group>"; };
+		BC1629412621D189001D75F0 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		BC1629432621D1B1001D75F0 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
+		BC1629452621D20F001D75F0 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
+		BC1629472621DC1F001D75F0 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
+		BC5D2FB226266F0700D6CE64 /* ShakingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakingTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,10 +113,11 @@
 		BC1629082621CE4F001D75F0 /* Airport Forecast */ = {
 			isa = PBXGroup;
 			children = (
+				BC16293E2621CF1C001D75F0 /* Controller */,
+				BC16293D2621CF0F001D75F0 /* View */,
+				BC16293C2621CE86001D75F0 /* Model */,
 				BC1629092621CE4F001D75F0 /* AppDelegate.swift */,
 				BC16290B2621CE4F001D75F0 /* SceneDelegate.swift */,
-				BC16290D2621CE4F001D75F0 /* ViewController.swift */,
-				BC16290F2621CE4F001D75F0 /* Main.storyboard */,
 				BC1629152621CE53001D75F0 /* Assets.xcassets */,
 				BC1629172621CE53001D75F0 /* LaunchScreen.storyboard */,
 				BC16291A2621CE53001D75F0 /* Info.plist */,
@@ -129,6 +142,35 @@
 				BC1629302621CE53001D75F0 /* Info.plist */,
 			);
 			path = "Airport ForecastUITests";
+			sourceTree = "<group>";
+		};
+		BC16293C2621CE86001D75F0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC1629412621D189001D75F0 /* WeatherData.swift */,
+				BC1629432621D1B1001D75F0 /* WeatherManager.swift */,
+				BC1629452621D20F001D75F0 /* ConditionModel.swift */,
+				BC1629472621DC1F001D75F0 /* ForecastModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC16293D2621CF0F001D75F0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BC16290F2621CE4F001D75F0 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BC16293E2621CF1C001D75F0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC16290D2621CE4F001D75F0 /* ViewController.swift */,
+				BC16293F2621CF80001D75F0 /* DetailsViewContoller.swift */,
+				BC5D2FB226266F0700D6CE64 /* ShakingTextField.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +305,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC1629142621CE4F001D75F0 /* Airport_Forecast.xcdatamodeld in Sources */,
+				BC5D2FB326266F0700D6CE64 /* ShakingTextField.swift in Sources */,
+				BC1629402621CF80001D75F0 /* DetailsViewContoller.swift in Sources */,
 				BC16290E2621CE4F001D75F0 /* ViewController.swift in Sources */,
+				BC1629442621D1B1001D75F0 /* WeatherManager.swift in Sources */,
+				BC1629482621DC1F001D75F0 /* ForecastModel.swift in Sources */,
 				BC16290A2621CE4F001D75F0 /* AppDelegate.swift in Sources */,
+				BC1629422621D189001D75F0 /* WeatherData.swift in Sources */,
+				BC1629462621D20F001D75F0 /* ConditionModel.swift in Sources */,
 				BC16290C2621CE4F001D75F0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
