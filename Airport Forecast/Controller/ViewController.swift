@@ -89,6 +89,7 @@ extension ViewController: WeatherManagerDelegate{
             weatherReport = weather
             if(searchField.text! != ""){
                 airportFavorites?.append(AirportData(airportName: searchField.text!.uppercased()))
+                airportFavorites?.removeDuplicates()
                 favoriteTableView.reloadData()
             }
             
@@ -107,7 +108,6 @@ extension ViewController: WeatherManagerDelegate{
             DispatchQueue.main.async {
                 self.present(alert, animated: true)
             }
-            print("ERROR FOUND NOT AN ACTUAL AIRPORT")
         }
     }
 }
@@ -149,4 +149,21 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate, TableCellV
         
     }
 
+}
+
+//MARK: - Duplicates
+
+
+extension Array where Element: Hashable {
+    func removingDuplicates() -> [Element] {
+        var addedDict = [Element: Bool]()
+
+        return filter {
+            addedDict.updateValue(true, forKey: $0) == nil
+        }
+    }
+
+    mutating func removeDuplicates() {
+        self = self.removingDuplicates()
+    }
 }

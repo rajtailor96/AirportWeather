@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct AirportData{
+struct AirportData: Hashable{
     let airportName: String
 }

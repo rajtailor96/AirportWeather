@@ -20,7 +20,6 @@ struct WeatherManager{
     
     func fetchWeather(airportName: String){
         let urlString = "\(airportURL)\(airportName)"
-        print(urlString)
         performRequest(with: urlString)
     }
     
