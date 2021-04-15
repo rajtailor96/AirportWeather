@@ -31,16 +31,6 @@ class ViewController: UIViewController {
         favoriteTableView.dataSource = self
     }
     
-    func getTime() -> String{
-        let now = Date()
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .short
-
-        let datetime = formatter.string(from: now)
-        return datetime
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -61,10 +51,10 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextFieldDelegate{
     @IBAction func searchPressed(_ sender: UIButton) {
-        if let search = searchField.text{
+        if searchField.text == ""{
+            print("Hello")
+        } else if let search = searchField.text{
             weatherManager.fetchWeather(airportName: search.lowercased())
-            airportFavorites?.append(AirportData(airportName: search.uppercased()))
-            favoriteTableView.reloadData()
         } else {
             print("Empty")
         }
@@ -102,6 +92,8 @@ extension ViewController: WeatherManagerDelegate{
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: AirportWeather){
        DispatchQueue.main.sync{
             weatherReport = weather
+            airportFavorites?.append(AirportData(airportName: searchField.text!.uppercased()))
+            favoriteTableView.reloadData()
             self.performSegue(withIdentifier: "detailView", sender: self)
        }
     }
@@ -109,6 +101,14 @@ extension ViewController: WeatherManagerDelegate{
     func didFailWithError(error: Error) {
         if error.localizedDescription.contains("data couldn’t be read"){
             searchField.shake()
+            
+            let alert = UIAlertController(title: "The Airport does not Exist", message: "Please input an Airport that exists", preferredStyle: .actionSheet)
+
+            alert.addAction(UIAlertAction(title: "Try Again", style: .default, handler: nil))
+
+            DispatchQueue.main.async {
+                self.present(alert, animated: true)
+            }
             print("ERROR FOUND NOT AN ACTUAL AIRPORT")
         }
     }
