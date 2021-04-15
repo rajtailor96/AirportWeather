@@ -11,8 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var favoriteTableView: UITableView!
-    
-    
+
     var weatherManager = WeatherManager()
     var weatherReport: AirportWeather?
     var airportFavorites: [AirportData]?
@@ -20,8 +19,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let kpwm = AirportData(airportName: "KPWM", time: getTime())
-        let kaus = AirportData(airportName: "KAUS", time: getTime())
+        let kpwm = AirportData(airportName: "KPWM")
+        let kaus = AirportData(airportName: "KAUS")
         airportFavorites = [kaus, kpwm]
         
         print(airportFavorites!)
@@ -34,7 +33,6 @@ class ViewController: UIViewController {
     
     func getTime() -> String{
         let now = Date()
-
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .short
@@ -65,7 +63,7 @@ extension ViewController: UITextFieldDelegate{
     @IBAction func searchPressed(_ sender: UIButton) {
         if let search = searchField.text{
             weatherManager.fetchWeather(airportName: search.lowercased())
-            airportFavorites?.append(AirportData(airportName: search.uppercased(), time: getTime()))
+            airportFavorites?.append(AirportData(airportName: search.uppercased()))
             favoriteTableView.reloadData()
         } else {
             print("Empty")
@@ -134,29 +132,23 @@ extension UITextField{
 }
 
 
-//MARK: - TableView
+//MARK: - FavoritesTableView
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate{
+extension ViewController: UITableViewDataSource, UITableViewDelegate, TableCellViewDelegate{
+    func onClickCell(name: String) {
+        weatherManager.fetchWeather(airportName: name.lowercased())
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return airportFavorites?.count ?? 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AirportCell", for: indexPath)
-        let labelRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.tableViewLabelClick))
-        cell.textLabel?.isUserInteractionEnabled = true
-        cell.textLabel?.addGestureRecognizer(labelRecognizer)
-        cell.textLabel?.text = "Airport: \( airportFavorites?[indexPath.row].airportName ?? "N/A") \t Date: \(airportFavorites?[indexPath.row].time ?? "N/A")"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AirportCell", for: indexPath) as? TableCellViewModel
+        cell?.labelName.text = "\( airportFavorites?[indexPath.row].airportName ?? "N/A")"
+        cell?.cellDelegate = self
+        return cell!
         
-        return cell
-        
-    }
-    
-    @objc func tableViewLabelClick(sender : UITapGestureRecognizer){
-            if let airport = searchField.text {
-            weatherManager.fetchWeather(airportName: airport.lowercased())
-            self.performSegue(withIdentifier: "detailView", sender: self)
-        }
     }
 
 }

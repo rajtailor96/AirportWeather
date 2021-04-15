@@ -10,5 +10,4 @@ import Foundation
 
 struct AirportData{
     let airportName: String
-    let time: String
 }

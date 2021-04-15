@@ -7,14 +7,39 @@
 //
 
 import UIKit
+import CoreData
 
-
-class DetailsViewController: UITableViewController{
+class DetailsViewController: UITableViewController, NSFetchedResultsControllerDelegate{
     var conditionsArray: [String]?
     var forecastArray: [String]?
     var arrayToDisplay: [String]?
     var tableTitle = "Conditions"
 
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        tableView.reloadData()
+    }
+    
+    var dataProvider: DataProvider!
+    lazy var fetchedResultsController: NSFetchedResultsController<AirportCoreData> = {
+        let fetchRequest = NSFetchRequest<AirportCoreData>(entityName:"Airport")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "airportName", ascending:true)]
+        
+        let controller = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                    managedObjectContext: dataProvider.viewContext,
+                                                    sectionNameKeyPath: nil, cacheName: nil)
+        controller.delegate = self
+        
+        do {
+            try controller.performFetch()
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        
+        return controller
+    }()
+    
     override func viewDidLoad() {
         arrayToDisplay = conditionsArray
     }
@@ -51,8 +76,6 @@ class DetailsViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return "Airport Weather \(tableTitle)"
     }
-    
 
-    
 }
 
