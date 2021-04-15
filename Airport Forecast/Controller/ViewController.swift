@@ -87,8 +87,11 @@ extension ViewController: WeatherManagerDelegate{
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: AirportWeather){
        DispatchQueue.main.sync{
             weatherReport = weather
-            airportFavorites?.append(AirportData(airportName: searchField.text!.uppercased()))
-            favoriteTableView.reloadData()
+            if(searchField.text! != ""){
+                airportFavorites?.append(AirportData(airportName: searchField.text!.uppercased()))
+                favoriteTableView.reloadData()
+            }
+            
             self.performSegue(withIdentifier: "detailView", sender: self)
        }
     }
