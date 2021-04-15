@@ -18,13 +18,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        airportFavorites = [AirportData(airportName: "KAUS"), AirportData(airportName: "KPWM")]
 
-        let kpwm = AirportData(airportName: "KPWM")
-        let kaus = AirportData(airportName: "KAUS")
-        airportFavorites = [kaus, kpwm]
-        
-        print(airportFavorites!)
-        
         searchField.delegate = self
         weatherManager.delegate = self
         favoriteTableView.delegate = self
@@ -54,7 +49,7 @@ extension ViewController: UITextFieldDelegate{
         if searchField.text == ""{
             print("Hello")
         } else if let search = searchField.text{
-            weatherManager.fetchWeather(airportName: search.lowercased())
+            weatherManager.fetchWeather(airportName: search.lowercased().trimmingCharacters(in: .whitespacesAndNewlines))
         } else {
             print("Empty")
         }
