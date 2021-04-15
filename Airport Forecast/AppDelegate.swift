@@ -2,20 +2,36 @@
 //  AppDelegate.swift
 //  Airport Forecast
 //
-//  Created by Raj Tailor on 4/10/21.
+//  Created by Raj Tailor on 4/12/21.
 //  Copyright © 2021 Raj Tailor. All rights reserved.
 //
 
 import UIKit
 import CoreData
+import BackgroundTasks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    func scheduleBackgroundWeatherFetch() {
+        let weatherTask = BGAppRefreshTaskRequest(identifier: "com.raj.fetchWeather")
+        weatherTask.earliestBeginDate = Date(timeIntervalSinceNow: 6)
+        do {
+          try BGTaskScheduler.shared.submit(weatherTask)
+        } catch {
+          print("Unable to submit task: \(error.localizedDescription)")
+        }
+    }
+    
+    func handleAppRefreshTask(task: BGAppRefreshTask) {
 
-
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Fetch data once an hour.
+        UIApplication.shared.setMinimumBackgroundFetchInterval(5)
+
+        // Other initialization…
         return true
     }
 

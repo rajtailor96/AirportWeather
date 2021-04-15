@@ -2,7 +2,7 @@
 //  Details View Contoller.swift
 //  Airport Forecast
 //
-//  Created by Raj Tailor on 4/10/21.
+//  Created by Raj Tailor on 4/12/21.
 //  Copyright © 2021 Raj Tailor. All rights reserved.
 //
 
@@ -20,11 +20,9 @@ class DetailsViewController: UITableViewController{
     }
     
     @IBAction func segmentedControlUpdate(_ sender: UISegmentedControl) {
-        
         switch sender.selectedSegmentIndex {
         case 0:
             arrayToDisplay = conditionsArray
-            
         case 1:
             arrayToDisplay = forecastArray
         default:
@@ -33,7 +31,6 @@ class DetailsViewController: UITableViewController{
         
         tableTitle = sender.titleForSegment(at: sender.selectedSegmentIndex)!
         tableView.reloadData()
-
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

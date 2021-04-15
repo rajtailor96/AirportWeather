@@ -2,7 +2,7 @@
 //  SceneDelegate.swift
 //  Airport Forecast
 //
-//  Created by Raj Tailor on 4/10/21.
+//  Created by Raj Tailor on 4/12/21.
 //  Copyright © 2021 Raj Tailor. All rights reserved.
 //
 
@@ -49,6 +49,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Save changes in the application's managed object context when the application transitions to the background.
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+        (UIApplication.shared.delegate as! AppDelegate).scheduleBackgroundWeatherFetch()
+
     }
 
 

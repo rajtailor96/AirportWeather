@@ -2,12 +2,11 @@
 //  WeatherManager.swift
 //  Airport Forecast
 //
-//  Created by Raj Tailor on 4/10/21.
+//  Created by Raj Tailor on 4/12/21.
 //  Copyright © 2021 Raj Tailor. All rights reserved.
 //
 
 import Foundation
-import CoreLocation
 
 protocol WeatherManagerDelegate {
     func didUpdateWeather(_ weatherManager: WeatherManager, weather: AirportWeather)
@@ -17,6 +16,7 @@ protocol WeatherManagerDelegate {
 struct WeatherManager{
     let airportURL = "https://qa.foreflight.com/weather/report/"
     var delegate: WeatherManagerDelegate?
+    
     
     func fetchWeather(airportName: String){
         let urlString = "\(airportURL)\(airportName)"
@@ -66,9 +66,7 @@ struct WeatherManager{
                     wind: conditions.report.conditions.wind)
                 let forecastReport = ForecastModel(relativeHumidity: conditions.report.forecast.conditions[0].relativeHumidity, cloudLayers: conditions.report.forecast.conditions[0].cloudLayers, cloudLayersV2: conditions.report.forecast.conditions[0].cloudLayersV2, visibility: conditions.report.forecast.conditions[0].visibility, wind: conditions.report.forecast.conditions[0].wind)
                 
-                var finalReport = AirportWeather(conditionsReport: conditionsReport, forecastReport: forecastReport)
-                //finalReport.conditionsReport = conditionsReport
-                //finalReport.forecastReport = forecastReport
+                let finalReport = AirportWeather(conditionsReport: conditionsReport, forecastReport: forecastReport)
                 return finalReport
             } catch {
                 self.delegate?.didFailWithError(error: error)

@@ -21,7 +21,7 @@
 		BC1629442621D1B1001D75F0 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1629432621D1B1001D75F0 /* WeatherManager.swift */; };
 		BC1629462621D20F001D75F0 /* ConditionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1629452621D20F001D75F0 /* ConditionModel.swift */; };
 		BC1629482621DC1F001D75F0 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC1629472621DC1F001D75F0 /* ForecastModel.swift */; };
-		BC5D2FB326266F0700D6CE64 /* ShakingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D2FB226266F0700D6CE64 /* ShakingTextField.swift */; };
+		BC5D2FB526279EB500D6CE64 /* AirportNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5D2FB426279EB500D6CE64 /* AirportNames.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +62,7 @@
 		BC1629432621D1B1001D75F0 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		BC1629452621D20F001D75F0 /* ConditionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionModel.swift; sourceTree = "<group>"; };
 		BC1629472621DC1F001D75F0 /* ForecastModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastModel.swift; sourceTree = "<group>"; };
-		BC5D2FB226266F0700D6CE64 /* ShakingTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakingTextField.swift; sourceTree = "<group>"; };
+		BC5D2FB426279EB500D6CE64 /* AirportNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AirportNames.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +151,7 @@
 				BC1629432621D1B1001D75F0 /* WeatherManager.swift */,
 				BC1629452621D20F001D75F0 /* ConditionModel.swift */,
 				BC1629472621DC1F001D75F0 /* ForecastModel.swift */,
+				BC5D2FB426279EB500D6CE64 /* AirportNames.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,7 +169,6 @@
 			children = (
 				BC16290D2621CE4F001D75F0 /* ViewController.swift */,
 				BC16293F2621CF80001D75F0 /* DetailsViewContoller.swift */,
-				BC5D2FB226266F0700D6CE64 /* ShakingTextField.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -305,8 +305,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC1629142621CE4F001D75F0 /* Airport_Forecast.xcdatamodeld in Sources */,
-				BC5D2FB326266F0700D6CE64 /* ShakingTextField.swift in Sources */,
 				BC1629402621CF80001D75F0 /* DetailsViewContoller.swift in Sources */,
+				BC5D2FB526279EB500D6CE64 /* AirportNames.swift in Sources */,
 				BC16290E2621CE4F001D75F0 /* ViewController.swift in Sources */,
 				BC1629442621D1B1001D75F0 /* WeatherManager.swift in Sources */,
 				BC1629482621DC1F001D75F0 /* ForecastModel.swift in Sources */,
@@ -487,6 +487,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5CKQSXZ2XC;
 				INFOPLIST_FILE = "Airport Forecast/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -504,6 +505,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5CKQSXZ2XC;
 				INFOPLIST_FILE = "Airport Forecast/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
